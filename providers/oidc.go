@@ -61,6 +61,8 @@ func (p *OIDCProvider) GetLoginURL(redirectURI, state, nonce string, extraParams
 	if !p.SkipNonce {
 		extraParams.Add("nonce", nonce)
 	}
+	// TEST: Ask MS to call us with POST
+	extraParams.Add("response_mode", "form_post")
 	loginURL := makeLoginURL(p.Data(), redirectURI, state, extraParams)
 	return loginURL.String()
 }
