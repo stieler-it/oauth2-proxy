@@ -104,6 +104,8 @@ func TestOIDCProviderGetLoginURL(t *testing.T) {
 	assert.Contains(t, withNonce, fmt.Sprintf("nonce=%s", nonce))
 	assert.NotContains(t, withNonce, "code_challenge")
 	assert.NotContains(t, withNonce, "code_challenge_method")
+	// TEST param is there
+	assert.Contains(t, withNonce, "response_mode=form_post")
 }
 
 func TestOIDCProviderRedeem(t *testing.T) {
